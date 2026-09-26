@@ -41,6 +41,10 @@ CHANNELS = {
     "cgram": (("nk",), lambda r: _cgram_terms(r[0])),
     "joint": (("nc", "sk", "nk", "an"), lambda r: _name_terms(r[0], r[1], r[2]) + _addr_terms(r[3])),
     "name_noaddr": (("nc", "sk", "nk"), lambda r: _name_terms(*r)),
+    # pool restricted to native-script names: phonetic-skeleton name terms + address terms
+    "native": (("sk", "an"), lambda r: ["s" + t for t in r[0].split()] + _addr_terms(r[1])),
+    # pool restricted to empty-address records: character 4-grams catch typos in the name
+    "cgram_noaddr": (("nk",), lambda r: _cgram_terms(r[0])),
 }
 
 
@@ -55,7 +59,7 @@ def _terms_part(args):
     need = list(CHANNELS[channel][0])
     f = pq.ParquetFile(path)
     L, H, W = [], [], []
-    for b in f.iter_batches(batch_size=100_000, columns=sorted(set(need) | {"nc", "nk", "web", "an"})):
+    for b in f.iter_batches(batch_size=100_000, columns=sorted(set(need) | {"nc", "nk", "web", "an", "native"})):
         cols = b.to_pandas()
         lens, hs = [], []
         for row in zip(*[cols[c].tolist() for c in need]):
@@ -65,7 +69,7 @@ def _terms_part(args):
         L.append(np.array(lens, np.int32))
         H.append(np.array(hs, np.uint64).view(np.int64))
         W.append(np.stack([cols.web.values | (~cols.nc.str.contains(" ", regex=False).values & (cols.nk.str.len().values >= 8)),
-                           (cols.an == "").values], axis=1))
+                           (cols.an == "").values, cols.native.values], axis=1))
     return np.concatenate(L), np.concatenate(H), np.concatenate(W)
 
 
@@ -284,7 +288,34 @@ def cand_path(split, channel, sample):
     return work(split, f"cand_{channel}.parquet" if sample >= 1 else f"cand_{channel}_s{int(sample * 100)}.parquet")
 
 
+def run_reverse(split: str, channel: str, K: int = 5, cap: int = 5_000) -> pd.DataFrame:
+    """Reverse retrieval: every S2/S3 record queries an index of the S1 records of its country and keeps
+    its top-K S1. Recovers records whose true S1 is crowded out of that S1's forward top-K list by
+    same-name look-alikes. Output uses the forward orientation (s1, p, score, rank-within-the-record)."""
+    t0 = time.time()
+    base = channel[:-4]
+    rec = load_records(split, ["source", "country"])
+    ptr, hs, _ = build_terms(split, base)
+    t1 = time.time()
+    outs = []
+    for c in rec.country.cat.categories:
+        cm = (rec.country == c).values
+        pool = np.flatnonzero(cm & (rec.source.values > 1))
+        s1 = np.flatnonzero(cm & (rec.source.values == 1))
+        if len(pool) == 0 or len(s1) == 0:
+            continue
+        r = retrieve(ptr, hs, pool, s1, K, cap, q_all_rows=pool)
+        outs.append(r.rename(columns={"s1": "p", "p": "s1"})[["s1", "p", "score", "rank"]])
+    out = pd.concat(outs, ignore_index=True)
+    out.to_parquet(cand_path(split, channel, 1.0), index=False)
+    print(f"[{split}/{channel}] terms {len(hs)/1e6:.0f}M in {t1-t0:.0f}s, retrieval {time.time()-t1:.0f}s, "
+          f"{len(out)/1e6:.1f}M pairs", flush=True)
+    return out
+
+
 def run_channel(split: str, channel: str, K: int = 50, cap: int = 5_000, sample: float = 1.0) -> pd.DataFrame:
+    if channel.endswith("_rev"):
+        return run_reverse(split, channel, K, cap)
     t0 = time.time()
     rec = load_records(split, ["source", "country"])
     ptr, hs, flags = build_terms(split, channel)
@@ -292,8 +323,10 @@ def run_channel(split: str, channel: str, K: int = 50, cap: int = 5_000, sample:
     pm = rec.source.values > 1
     if channel == "cgram":  # char-gram channel only indexes concatenated / web-style pool names
         pm &= flags[:, 0]
-    if channel == "name_noaddr":  # name-only channel over pool records whose address is empty
+    if channel in ("name_noaddr", "cgram_noaddr"):  # pool records whose address is empty
         pm &= flags[:, 1]
+    if channel == "native":  # pool records whose name is in an Indic script
+        pm &= flags[:, 2]
     qm = query_mask(split, rec, sample)
     outs = []
     for c in rec.country.cat.categories:

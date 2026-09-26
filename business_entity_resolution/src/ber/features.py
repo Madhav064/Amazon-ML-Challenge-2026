@@ -22,7 +22,7 @@ STR_COLS = ["nn", "nc", "nk", "sk", "an", "num"]
 
 
 # ----------------------------------------------------------------------------- candidates
-def assemble(split: str, Ks: dict, sample: float = 1.0, s1_range=None) -> pd.DataFrame:
+def assemble(split: str, Ks: dict, sample: float = 1.0, s1_range=None, keep_s1=None) -> pd.DataFrame:
     """Union of per-channel top-K lists; one row per (s1, p) with every channel's score and rank."""
     out = None
     keep = None
@@ -37,11 +37,17 @@ def assemble(split: str, Ks: dict, sample: float = 1.0, s1_range=None) -> pd.Dat
         t = pq.read_table(cand_path(split, ch, 1.0 if keep is not None else sample), filters=flt).to_pandas()
         if keep is not None:
             t = t[keep[t.s1.values]]
+        if keep_s1 is not None:  # restrict to requested S1 before merging channels (memory)
+            t = t[keep_s1[t.s1.values]]
         t = t.rename(columns={"score": f"score_{ch}", "rank": f"rank_{ch}"})
         out = t if out is None else out.merge(t, on=["s1", "p"], how="outer")
     for ch, K in Ks.items():
         out[f"score_{ch}"] = out[f"score_{ch}"].fillna(0).astype(np.float32)
         out[f"rank_{ch}"] = out[f"rank_{ch}"].fillna(K).astype(np.int16)
+    if "score_joint_rev" in out and "score_joint" in out:
+        # reverse retrieval computes the same cosine; pairs found only in reverse get their real joint score
+        miss = out.score_joint.values == 0
+        out.loc[miss, "score_joint"] = out.score_joint_rev.values[miss]
     return out.sort_values(["s1", "p"]).reset_index(drop=True)
 
 

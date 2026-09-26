@@ -1,0 +1,16 @@
+  v2 features in 185s
+[m2_rarity_numbers] 7,179,204 pairs, 0.1020 positive, 74 features
+  fold 0: 400 iters
+  fold 1: 400 iters
+  fold 2: 400 iters
+  fold 3: 400 iters
+     rule  exclusive    t  macro_f05  f05_matched_entities  f05_singletons  pair_precision  pair_recall  n_entities  n_pred_pairs
+threshold       True 0.70   0.964714              0.964580        0.966956        0.992961     0.920653      220479        707195
+threshold       True 0.65   0.964606              0.964841        0.960685        0.991448     0.923793      220479        710690
+threshold      False 0.70   0.964575              0.964466        0.966393        0.992767     0.920669      220479        707345
+threshold       True 0.75   0.964470              0.963975        0.972745        0.994076     0.917568      220479        704035
+threshold      False 0.65   0.964435              0.964697        0.960042        0.991208     0.923820      220479        710883
+threshold      False 0.75   0.964361              0.963879        0.972423        0.993916     0.917581      220479        704158
+threshold       True 0.60   0.964217              0.964909        0.952645        0.989651     0.926782      220479        714284
+threshold      False 0.60   0.964015              0.964742        0.951841        0.989355     0.926837      220479        714540
+[m2_rarity_numbers] blocking ceiling 0.9853  best macro F0.5 0.9647 (threshold, exclusive=True, t=0.7)  2862s

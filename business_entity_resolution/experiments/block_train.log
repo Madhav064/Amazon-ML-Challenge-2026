@@ -1,0 +1,15 @@
+    retrieve 883,188 q x 4,133,346 docs, 5.0M terms: index 60s, search 120s
+    retrieve 1,323,633 q x 6,186,873 docs, 6.3M terms: index 49s, search 105s
+[train/joint] terms 235M in 96s, retrieval 354s, 66.2M pairs (30.0/S1)
+    retrieve 883,188 q x 4,133,346 docs, 4.3M terms: index 36s, search 75s
+    retrieve 1,323,633 q x 6,186,873 docs, 5.0M terms: index 30s, search 68s
+[train/addr] terms 171M in 71s, retrieval 220s, 44.1M pairs (20.0/S1)
+    retrieve 883,188 q x 4,133,346 docs, 0.7M terms: index 8s, search 220s
+    retrieve 1,323,633 q x 6,186,873 docs, 1.3M terms: index 15s, search 238s
+[train/name] terms 64M in 38s, retrieval 497s, 44.1M pairs (20.0/S1)
+    retrieve 883,188 q x 239,123 docs, 0.2M terms: index 6s, search 27s
+    retrieve 1,323,633 q x 401,543 docs, 0.2M terms: index 9s, search 70s
+[train/cgram] terms 202M in 77s, retrieval 123s, 44.1M pairs (20.0/S1)
+    retrieve 883,188 q x 122,794 docs, 0.1M terms: index 2s, search 7s
+    retrieve 1,323,633 q x 222,089 docs, 0.1M terms: index 3s, search 17s
+[train/name_noaddr] terms 64M in 39s, retrieval 39s, 43.9M pairs (19.9/S1)

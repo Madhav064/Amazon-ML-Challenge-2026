@@ -1,0 +1,7 @@
+# Ignore datasets and intermediate work data to avoid exceeding GitHub's file size limits
+student_resource/dataset/
+work/
+output/
+.DS_Store
+__pycache__/
+*.pyc

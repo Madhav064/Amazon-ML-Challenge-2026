@@ -1,0 +1,13 @@
+[m3_fast] 7,198,853 pairs, 0.1014 positive, 80 features
+  fold 0: 400 iters
+  fold 1: 400 iters
+     rule  exclusive    t  macro_f05  f05_matched_entities  f05_singletons  pair_precision  pair_recall  n_entities  n_pred_pairs
+threshold       True 0.70   0.965036              0.964724        0.970252        0.993568     0.921145      220479        707140
+threshold      False 0.70   0.965000              0.964695        0.970092        0.993516     0.921146      220479        707178
+threshold       True 0.65   0.964866              0.964967        0.963177        0.992298     0.923561      220479        709903
+threshold       True 0.75   0.964850              0.964210        0.975559        0.994622     0.918407      220479        704292
+threshold      False 0.65   0.964823              0.964936        0.962936        0.992233     0.923570      220479        709956
+threshold      False 0.75   0.964816              0.964183        0.975398        0.994574     0.918408      220479        704327
+threshold       True 0.60   0.964537              0.965113        0.954896        0.990832     0.926129      220479        712930
+threshold      False 0.60   0.964472              0.965063        0.954575        0.990731     0.926156      220479        713023
+[m3_fast] blocking ceiling 0.9841  best macro F0.5 0.9650 (threshold, exclusive=True, t=0.7)  1786s

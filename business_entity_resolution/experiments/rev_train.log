@@ -1,0 +1,3 @@
+    retrieve 4,133,346 q x 883,188 docs, 5.0M terms: index 66s, search 419s
+    retrieve 6,186,873 q x 1,323,633 docs, 6.3M terms: index 64s, search 378s
+[train/joint_rev] terms 235M in 95s, retrieval 947s, 51.6M pairs

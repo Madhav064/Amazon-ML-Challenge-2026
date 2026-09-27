@@ -1,0 +1,12 @@
+[real world] sub1 on sample A (in-sample, so absolute level optimistic):
+ exclusive   t  macro_f05  f05_matched_entities  f05_singletons  pair_precision  pair_recall  n_entities  n_pred_pairs
+      True 0.6     0.9709                0.9704          0.9798          0.9949       0.9323      220479        714794
+     False 0.6     0.9709                0.9703          0.9797          0.9948       0.9323      220479        714838
+      True 0.7     0.9706                0.9696          0.9871          0.9968       0.9276      220479        709743
+     False 0.7     0.9706                0.9696          0.9871          0.9968       0.9276      220479        709755
+[sim world] sub1 on sample A (in-sample, so absolute level optimistic):
+ exclusive   t  macro_f05  f05_matched_entities  f05_singletons  pair_precision  pair_recall  n_entities  n_pred_pairs
+      True 0.7     0.9688                0.9683          0.9779          0.9941       0.9285      220479        712346
+     False 0.7     0.9688                0.9682          0.9777          0.9941       0.9285      220479        712361
+      True 0.6     0.9685                0.9685          0.9685          0.9915       0.9331      220479        717804
+     False 0.6     0.9685                0.9685          0.9682          0.9915       0.9331      220479        717855

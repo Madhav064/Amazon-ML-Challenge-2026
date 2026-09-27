@@ -1,0 +1,14 @@
+  test chunk 1: 997,634 pairs, 181s
+  test chunk 2: 998,433 pairs, 362s
+  test chunk 3: 996,951 pairs, 540s
+  test chunk 4: 997,005 pairs, 719s
+  test chunk 5: 998,203 pairs, 899s
+  test chunk 6: 997,579 pairs, 1077s
+  test chunk 7: 999,063 pairs, 1256s
+  test chunk 8: 998,005 pairs, 1435s
+  test chunk 9: 997,897 pairs, 1615s
+  test chunk 10: 999,510 pairs, 1797s
+  test chunk 11: 998,221 pairs, 1976s
+  test chunk 12: 550,262 pairs, 2073s
+wrote C:\Users\madha\Desktop\ML challenge\output\matching_results.tsv: 5,561,802 ids (3.21/S1)
+wrote C:\Users\madha\Desktop\ML challenge\output\candidate_pairs.tsv: 11,528,763 ids (6.65/S1)

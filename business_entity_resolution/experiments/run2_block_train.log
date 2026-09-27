@@ -1,0 +1,5 @@
+    retrieve 883,188 q x 752,869 docs, 3.0M terms: index 29s, search 85s
+[train/native] terms 203M in 75s, retrieval 117s, 8.8M pairs (4.0/S1)
+    retrieve 883,188 q x 122,794 docs, 0.2M terms: index 5s, search 17s
+    retrieve 1,323,633 q x 222,089 docs, 0.2M terms: index 9s, search 39s
+[train/cgram_noaddr] terms 202M in 66s, retrieval 77s, 22.1M pairs (10.0/S1)

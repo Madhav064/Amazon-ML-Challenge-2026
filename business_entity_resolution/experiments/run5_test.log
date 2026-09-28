@@ -1,0 +1,23 @@
+  test chunk 1: 548,987 pairs, 174s
+  test chunk 2: 546,208 pairs, 345s
+  test chunk 3: 548,531 pairs, 517s
+  test chunk 4: 547,595 pairs, 688s
+  test chunk 5: 546,717 pairs, 858s
+  test chunk 6: 548,359 pairs, 1029s
+  test chunk 7: 547,023 pairs, 1198s
+  test chunk 8: 547,302 pairs, 1368s
+  test chunk 9: 548,511 pairs, 1538s
+  test chunk 10: 548,396 pairs, 1707s
+  test chunk 11: 547,096 pairs, 1876s
+  test chunk 12: 548,387 pairs, 2046s
+  test chunk 13: 548,237 pairs, 2215s
+  test chunk 14: 548,899 pairs, 2382s
+  test chunk 15: 547,173 pairs, 2551s
+  test chunk 16: 548,275 pairs, 2720s
+  test chunk 17: 547,724 pairs, 2892s
+  test chunk 18: 548,369 pairs, 3063s
+  test chunk 19: 548,962 pairs, 3234s
+  test chunk 20: 547,922 pairs, 3405s
+  test chunk 21: 548,010 pairs, 3574s
+  test chunk 22: 361,097 pairs, 3684s
+wrote scores_run5

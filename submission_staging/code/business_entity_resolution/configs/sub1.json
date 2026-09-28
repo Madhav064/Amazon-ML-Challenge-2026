@@ -1,0 +1,10 @@
+{
+  "name": "sub1",
+  "description": "First leaderboard submission: M3 (blocking B1, v1+v2+v3 features, single-stage HistGB up to 800 early-stopped iters), exclusive + threshold 0.7.",
+  "sample": 0.1,
+  "blocking": {"joint": 20, "addr": 10, "name": 5, "cgram": 5, "name_noaddr": 5},
+  "folds": 2,
+  "feature_version": 3,
+  "model": {"max_iter": 800},
+  "decision": {"exclusive": true, "threshold": 0.7}
+}

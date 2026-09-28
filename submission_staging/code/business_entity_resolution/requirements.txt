@@ -1,0 +1,8 @@
+numpy==1.26.4
+pandas==1.5.3
+pyarrow==24.0.0
+scipy==1.11.4
+scikit-learn==1.7.2
+numba==0.66.0
+rapidfuzz==3.14.3
+joblib==1.5.3

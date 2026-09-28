@@ -1,0 +1,8 @@
+{
+  "name": "m1_gbm_base",
+  "description": "HistGradientBoosting on all v1 pairwise + blocking + S1-context features, 4-fold grouped by S1.",
+  "sample": 0.1,
+  "blocking": {"joint": 20, "addr": 10, "name": 5, "cgram": 5, "name_noaddr": 5},
+  "folds": 4,
+  "model": {}
+}

@@ -1,0 +1,9 @@
+{
+  "name": "m2_rarity_numbers",
+  "description": "M1 + v2 features: name/address rarity counts and house-number precision features.",
+  "sample": 0.1,
+  "blocking": {"joint": 20, "addr": 10, "name": 5, "cgram": 5, "name_noaddr": 5},
+  "folds": 4,
+  "feature_version": 2,
+  "model": {}
+}

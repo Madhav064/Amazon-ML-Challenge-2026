@@ -1,0 +1,18 @@
+pruner set 7,388,649 pairs (67.2/S1), 0.0506 pos, 42 feats
+retrieval recall (deeper lists): 0.9823
+t=0.001  max=8   cand/S1= 7.63 recall=0.9735
+t=0.001  max=10  cand/S1= 9.07 recall=0.9778
+t=0.001  max=12  cand/S1=10.19 recall=0.9794
+t=0.001  max=15  cand/S1=11.40 recall=0.9806
+t=0.003  max=8   cand/S1= 6.90 recall=0.9731
+t=0.003  max=10  cand/S1= 7.77 recall=0.9772
+t=0.003  max=12  cand/S1= 8.35 recall=0.9786
+t=0.003  max=15  cand/S1= 8.89 recall=0.9795
+t=0.01   max=8   cand/S1= 5.96 recall=0.9713
+t=0.01   max=10  cand/S1= 6.35 recall=0.9746
+t=0.01   max=12  cand/S1= 6.53 recall=0.9754
+t=0.01   max=15  cand/S1= 6.64 recall=0.9758
+t=0.03   max=8   cand/S1= 4.98 recall=0.9656
+t=0.03   max=10  cand/S1= 5.06 recall=0.9676
+t=0.03   max=12  cand/S1= 5.07 recall=0.9678
+t=0.03   max=15  cand/S1= 5.08 recall=0.9678

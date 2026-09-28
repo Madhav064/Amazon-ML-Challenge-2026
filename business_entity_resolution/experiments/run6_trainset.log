@@ -1,0 +1,10 @@
+  B chunk 1: 492,696 pruned pairs, 2507s
+  B chunk 2: 490,491 pruned pairs, 2653s
+  B chunk 3: 491,898 pruned pairs, 2799s
+  B chunk 4: 489,003 pruned pairs, 2942s
+  B chunk 5: 490,525 pruned pairs, 3089s
+  B chunk 6: 494,266 pruned pairs, 3227s
+  B chunk 7: 491,492 pruned pairs, 3385s
+  B chunk 8: 490,663 pruned pairs, 3537s
+  B chunk 9: 409,666 pruned pairs, 3664s
+trainset B: 4,340,700 pairs (6.56/S1), 0.5143 pos
